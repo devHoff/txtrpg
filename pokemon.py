@@ -1,7 +1,6 @@
 class Pokemon:
-    def __init__(self, species, element, level=1, name=None):
+    def __init__(self, species, name=None, level=1):
         self.species = species
-        self.element = element
         self.level = level
 
         #If the Pokémon has no given name, then it is called by the species name (ex: Charmander)
@@ -39,10 +38,8 @@ class GrassPokemon(Pokemon):
     def grass_attack(self, target):
         print("{} shot a grass ball at {}!".format(self, target))
 
-my_pokemon = FirePokemon("Charmander", "Fire", name = "João")
-rivals_pokemon = WaterPokemon("Squirtle", "Water")
-
-rivals_pokemon.water_attack(my_pokemon)
+my_pokemon = FirePokemon("Charmander","João")
+rivals_pokemon = WaterPokemon("Squirtle")
 
 
 
