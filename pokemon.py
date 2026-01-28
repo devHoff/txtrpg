@@ -20,12 +20,24 @@ class Pokemon:
         print("{} attacked {}!".format(self, target))
 
 class FirePokemon(Pokemon):
+    element = "Fire"
     def fire_attack(self, target):
         print("{} threw a fire ball at {}!".format(self, target))
 
 class WaterPokemon(Pokemon):
+    element = "Water"
     def water_attack(self, target):
         print("{} shot a water beam at {}!".format(self, target))
+
+class ElectricPokemon(Pokemon):
+    element = "Electric"
+    def electric_attack(self, target):
+        print("{} cast a lightning bolt at {}!".format(self, target))
+
+class GrassPokemon(Pokemon):
+    element = "Grass"
+    def grass_attack(self, target):
+        print("{} shot a grass ball at {}!".format(self, target))
 
 my_pokemon = FirePokemon("Charmander", "Fire", name = "João")
 rivals_pokemon = WaterPokemon("Squirtle", "Water")
