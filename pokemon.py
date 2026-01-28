@@ -1,9 +1,13 @@
 import random
 
 class Pokemon:
-    def __init__(self, species, name=None, level=1):
+    def __init__(self, species, name=None, level=None):
         self.species = species
-        self.level = level
+
+        if level:
+            self.level = level
+        else:
+            self.level = random.randint(1, 100)
 
         #If the Pokémon has no given name, then it is called by the species name (ex: Charmander)
         if name:

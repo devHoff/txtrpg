@@ -43,9 +43,7 @@ class Enemy(Person):
         if not collection:
             for i in range(5):
                 pokemons = [FirePokemon("Charmander"), WaterPokemon("Squirtle"), ElectricPokemon("Pikachu"), GrassPokemon("Bulbasaur"), FirePokemon("Charizard")]
-                cpk = random.choice(pokemons)
-                cpk.level = random.randint(1, 100)
-                collection.append(cpk)
+                collection.append(random.choice(pokemons))
 
         super().__init__(name=name, collection=collection)
 
