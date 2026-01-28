@@ -1,3 +1,5 @@
+import random
+
 class Pokemon:
     def __init__(self, species, name=None, level=1):
         self.species = species

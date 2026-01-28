@@ -1,32 +1,65 @@
-from pokemon import *
+import random
 
+import pokemon
+from pokemon import *
+POKEMONS = [FirePokemon("Charmander"), WaterPokemon("Squirtle"), ElectricPokemon("Pikachu"), GrassPokemon("Bulbasaur"), FirePokemon("Charizard")]
+
+NAMES = ["Arthur", "Chi", "Michael", "Luis", "Peter", "Gary"]
 class Person:
-    def __init__(self, name=None, collection = []):
+    def __init__(self, name=None, collection=None):
+        if collection is None:
+            collection = []
         if name:
             self.name = name
         else:
-            self.name = "..."
+            self.name = random.choice(NAMES)
 
         self.collection = collection
+
+    def __str__(self):
+        return self.name
 
     def status(self):
         print("Name: {}\nRole: {}\nPokémons: {}".format(self.name, self.role, len(self.collection)))
 
     def show_collection(self):
         print("---- {}'s Collection ----".format(self.name))
-        for pokemon in self.collection:
-            print("· {}".format(pokemon))
+        if self.collection:
+            for pokemon in self.collection:
+                print("· {}".format(pokemon))
+        else:
+            print("No Pokémon captured yet.")
 
 class Player(Person):
     role = "Player"
 
+    def capture(self, pokemon):
+        self.collection.append(pokemon)
+        print("{} was captured!".format(pokemon))
 class Enemy(Person):
     role = "Enemy"
 
-pk1 = FirePokemon("Charmander")
-pk2 = WaterPokemon("Squirtle")
-pk3 = ElectricPokemon("Pikachu")
+    def __init__(self, name=None, collection=[]):
+        if not collection:
+            for i in range(5):
+                pokemons = [FirePokemon("Charmander"), WaterPokemon("Squirtle"), ElectricPokemon("Pikachu"), GrassPokemon("Bulbasaur"), FirePokemon("Charizard")]
+                cpk = random.choice(pokemons)
+                cpk.level = random.randint(1, 100)
+                collection.append(cpk)
 
-me = Player("Arthur", [pk1, pk2, pk3])
-me.status()
-me.show_collection()
+        super().__init__(name=name, collection=collection)
+
+#Player 1 created...
+me = Player("John", POKEMONS)
+rival = Enemy("Gary")
+
+
+#Player status check
+#me.status()
+
+#Collection showcase
+#me.show_collection()
+
+rival.status()
+rival.show_collection()
+
