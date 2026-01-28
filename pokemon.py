@@ -44,8 +44,6 @@ class GrassPokemon(Pokemon):
     def grass_attack(self, target):
         print("{} shot a grass ball at {}!".format(self, target))
 
-my_pokemon = FirePokemon("Charmander","João")
-rivals_pokemon = WaterPokemon("Squirtle")
 
 
 

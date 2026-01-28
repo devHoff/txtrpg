@@ -47,17 +47,4 @@ class Enemy(Person):
 
         super().__init__(name=name, collection=collection)
 
-#Player 1 created...
-me = Player("John", POKEMONS)
-rival = Enemy("Gary")
-
-
-#Player status check
-#me.status()
-
-#Collection showcase
-#me.show_collection()
-
-rival.status()
-rival.show_collection()
 
