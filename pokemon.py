@@ -11,15 +11,27 @@ class Pokemon:
             self.name = species
 
     def __str__(self):
-        return "Name: {}\nElement: {}\nLevel: {}\n".format(self.name, self.element, self.level)
+        return "{}({})".format(self.name, self.level)
+
+    def status(self):
+        print("Name: {}\nElement: {}\nLevel: {}\n".format(self.name, self.element, self.level))
 
     def attack(self, target):
-        print("{}({}) attacked {}({})!".format(self.name, self.level, target.species, target.level))
+        print("{} attacked {}!".format(self, target))
 
-my_pokemon = Pokemon("Charmander", "Fire", name = "João")
-print(my_pokemon)
+class FirePokemon(Pokemon):
+    def fire_attack(self, target):
+        print("{} threw a fire ball at {}!".format(self, target))
 
-rivals_pokemon = Pokemon("Squirtle", "Water")
-print(rivals_pokemon)
+class WaterPokemon(Pokemon):
+    def water_attack(self, target):
+        print("{} shot a water beam at {}!".format(self, target))
 
-my_pokemon.attack(rivals_pokemon)
+my_pokemon = FirePokemon("Charmander", "Fire", name = "João")
+rivals_pokemon = WaterPokemon("Squirtle", "Water")
+
+rivals_pokemon.water_attack(my_pokemon)
+
+
+
+
