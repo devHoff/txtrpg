@@ -2,19 +2,31 @@ import random
 
 import pokemon
 from pokemon import *
-POKEMONS = [FirePokemon("Charmander"), WaterPokemon("Squirtle"), ElectricPokemon("Pikachu"), GrassPokemon("Bulbasaur"), FirePokemon("Charizard")]
+POKEMONS = [FirePokemon("Charmander"), WaterPokemon("Squirtle"), ElectricPokemon("Pikachu"), GrassPokemon("Bulbasaur"),
+            FirePokemon("Charizard")]
 
 NAMES = ["Arthur", "Chi", "Michael", "Luis", "Peter", "Gary"]
 class Person:
-    def __init__(self, name=None, collection=None):
+    def __init__(self, name=None, collection=None, money = 100):
         if collection is None:
             collection = []
         if name:
             self.name = name
         else:
             self.name = random.choice(NAMES)
-
+        self.money = money
         self.collection = collection
+
+    def show_money(self):
+        print("{}'s bank account: ${}".format(self, self.money))
+
+    def make_money(self, amount, fair_amount, Pokemon):
+        if amount is not None:
+            self.money += amount
+        else:
+            self.money += fair_amount
+        print("{} got ${}!".format(self, fair_amount))
+        self.show_money()
 
     def __str__(self):
         return self.name
@@ -33,7 +45,8 @@ class Person:
     def choose_pokemon(self):
         if self.collection:
             chosenPokemon = random.choice(self.collection)
-            print(color.BOLD + "\n{}: ".format(self.name) + color.END + color.ITALIC + color.BOLD + "{}".format(chosenPokemon.name) + color.END + color.ITALIC + ", I choose you!\n" + color.END)
+            print(color.BOLD + "\n{}: ".format(self.name) + color.END + color.ITALIC + color.BOLD +
+                  "{}".format(chosenPokemon.name) + color.END + color.ITALIC + ", I choose you!\n" + color.END)
             return chosenPokemon
         else:
             print("No pokemon captured yet.")
@@ -44,11 +57,19 @@ class Person:
         target.show_collection()
         enemyPokemon = target.choose_pokemon()
 
-        #IMPORTANT! FIX ERROR -------
-        #if myPokemon and enemyPokemon:
-        #    while True:
-        #        myPokemon.attack(enemyPokemon)
-        #        enemyPokemon.attack(myPokemon)
+        if myPokemon and enemyPokemon:
+            while (myPokemon.hp >= 0 and enemyPokemon.hp >= 0):
+                myPokemon.battle_attack(enemyPokemon)
+                enemyPokemon.battle_attack(myPokemon)
+
+            if(myPokemon.hp >= 0):
+                print("{} won the battle!".format(self))
+                self.make_money(None, fair_amount=myPokemon.level * 100, Pokemon=myPokemon)
+            else:
+                print("{} won the battle!".format(target))
+                target.make_money(None, fair_amount=myPokemon.level * 100, Pokemon=enemyPokemon)
+        else:
+            print("The battle can not happen")
 
 class Player(Person):
     role = "Player"
@@ -65,14 +86,16 @@ class Player(Person):
                 try:
                     choice = int(choice)
                     chosenPokemon = self.collection[choice-1]
-                    print(color.BOLD + "\n{}: ".format(self.name) + color.END + color.RED + color.BOLD + color.ITALIC + "{}".format(chosenPokemon.name) + color.END + color.ITALIC + ", I choose you!\n" + color.END)
+                    print(color.BOLD + "\n{}: ".format(self.name) + color.END + color.RED + color.BOLD + color.ITALIC +
+                          "{}".format(chosenPokemon.name) + color.END + color.ITALIC + ", I choose you!\n" + color.END)
                     return chosenPokemon
                 except:
                     print("Please enter a valid choice.")
 
-                chosenPokemon = POKEMONS[int(choice)]
+
         else:
             print("There are no pokemon captured yet.")
+
 
 class Enemy(Person):
     role = "Enemy"
@@ -80,7 +103,10 @@ class Enemy(Person):
     def __init__(self, name=None, collection=[]):
         if not collection:
             for i in range(5):
-                pokemons = [FirePokemon("Charmander"), WaterPokemon("Squirtle"), ElectricPokemon("Pikachu"), GrassPokemon("Bulbasaur"), FirePokemon("Charizard")]
+                pokemons = [FirePokemon("Charmander"), WaterPokemon("Squirtle"), ElectricPokemon("Pikachu"),
+                            GrassPokemon("Bulbasaur"), FirePokemon("Charizard")]
                 collection.append(random.choice(pokemons))
 
         super().__init__(name=name, collection=collection)
+
+

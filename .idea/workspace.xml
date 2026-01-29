@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b84c8692-a9ea-435c-9dd6-8aa5fff330e3" name="Changes" comment="Choosing starter Pokémon">
+    <list default="true" id="b84c8692-a9ea-435c-9dd6-8aa5fff330e3" name="Changes" comment="Battle system - 1 Error yet to fix">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/person.py" beforeDir="false" afterPath="$PROJECT_DIR$/person.py" afterDir="false" />
@@ -53,6 +53,7 @@
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
     "ai.playground.ignore.import.keys.banner.in.settings": "true",
     "git-widget-placeholder": "master",
+    "ignore.virus.scanning.warn.message": "true",
     "nodejs_package_manager_path": "npm",
     "settings.editor.selected.configurable": "vcs.Git",
     "vue.rearranger.settings.migration": "true"
@@ -130,7 +131,8 @@
       <option name="presentableId" value="Default" />
       <updated>1769605353337</updated>
       <workItem from="1769605354366" duration="13683000" />
-      <workItem from="1769642844615" duration="6301000" />
+      <workItem from="1769642844615" duration="6698000" />
+      <workItem from="1769682031602" duration="11766000" />
     </task>
     <task id="LOCAL-00001" summary="Creating initial project directory tree">
       <option name="closed" value="true" />
@@ -236,7 +238,15 @@
       <option name="project" value="LOCAL" />
       <updated>1769644795588</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Battle system - 1 Error yet to fix">
+      <option name="closed" value="true" />
+      <created>1769649457812</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1769649457812</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -254,10 +264,11 @@
     <MESSAGE value="Pokemon random level generator&#10;Creating RNG system&#10;Random collection generator for rival" />
     <MESSAGE value="Cleaning random level generator" />
     <MESSAGE value="Choosing starter Pokémon" />
-    <option name="LAST_COMMIT_MESSAGE" value="Choosing starter Pokémon" />
+    <MESSAGE value="Battle system - 1 Error yet to fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="Battle system - 1 Error yet to fix" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/txtrpg$main.coverage" NAME="main Coverage Results" MODIFIED="1769649105528" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/txtrpg$main.coverage" NAME="main Coverage Results" MODIFIED="1769697105715" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/txtrpg$person.coverage" NAME="person Coverage Results" MODIFIED="1769643946779" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/txtrpg$pokemon.coverage" NAME="pokemon Coverage Results" MODIFIED="1769615586206" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>

@@ -33,6 +33,6 @@ def starter(player):
 player = Player("Arthur", [FirePokemon("Charizard", level=1)])
 
 
-enemy1 = Enemy("Gary")
+enemy1 = Enemy("Gary", [WaterPokemon("Squirtle", level=2)])
 
 player.battle(enemy1)

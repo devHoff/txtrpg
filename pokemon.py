@@ -37,22 +37,23 @@ class Pokemon:
     def status(self):
         print("Name: {}\nElement: {}\nLevel: {}\n".format(self.name, self.element, self.level))
 
-    def attack(self, target):
+    def battle_attack(self, target):
         print("{} attacked {}!".format(self, target))
-        target.hp -= self.attack
-        print("{} lost {}hp".format(target, self.attack))
+        effective_attack = int(self.attack * random.random() * 1.3)
+        target.hp -= effective_attack
+        print("{} lost {}hp".format(target, effective_attack))
 
 class FirePokemon(Pokemon):
     element = "Fire"
     def fire_attack(self, target):
         print("{} threw a fire ball at {}!".format(self, target))
-        super().attack(target)
+        super().battle_attack(target)
 
 class WaterPokemon(Pokemon):
     element = "Water"
     def water_attack(self, target):
         print("{} shot a water beam at {}!".format(self, target))
-        super().attack(target)
+        super().battle_attack(target)
 
 class ElectricPokemon(Pokemon):
     element = "Electric"
