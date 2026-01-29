@@ -1,3 +1,5 @@
+import pickle
+
 from person import *
 
 def starter(player):
@@ -33,6 +35,26 @@ def starter(player):
 player = Player("Arthur", [FirePokemon("Charizard", level=1)])
 enemy1 = Enemy("Gary", [WaterPokemon("Squirtle", level=2)])
 
+def save(player):
+    try:
+        with open("save.db", "wb") as f:
+            pickle.dump(player, f)
+            print("Game saved")
+    except Exception as error:
+        print("Could generate save file.")
+        print(error)
+
+def load_save():
+    try:
+        with open("save.db", "rb") as f:
+            new_player = pickle.load(f)
+        print("Game loaded")
+        return new_player
+    except Exception as error:
+        print("Could not load game.")
+        print(error)
+        return None
+
 if __name__ == "__main__":
     print("------------------")
     print("Welcome to Terminal POKEMÓN RPG")
@@ -58,7 +80,10 @@ if __name__ == "__main__":
         print("Choose an action:")
         print("1 - Explore the world")
         print("2 - Fight an enemy")
-        print("3 - Quit")
+        print("3 - Inspect collection")
+        print("4 - Save game")
+        print("5 - Load game")
+        print("6 - Quit")
         choice = input("Choose (1, 2 or 3) ----> ")
 
         try:
@@ -66,12 +91,17 @@ if __name__ == "__main__":
         except:
             print("Please enter a valid choice.")
 
-
         if int(choice == 1):
             player.explore()
         elif choice == 2:
             enemy = Enemy()
             player.battle(enemy)
         elif choice == 3:
+            player.show_collection()
+        elif choice == 4:
+            save(player)
+        elif choice == 5:
+            player = load_save()
+        elif choice == 6:
             break
 
