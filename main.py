@@ -31,8 +31,47 @@ def starter(player):
     player.show_collection()
 
 player = Player("Arthur", [FirePokemon("Charizard", level=1)])
-
-
 enemy1 = Enemy("Gary", [WaterPokemon("Squirtle", level=2)])
 
-player.battle(enemy1)
+if __name__ == "__main__":
+    print("------------------")
+    print("Welcome to Terminal POKEMÓN RPG")
+    print("------------------")
+    name = input("Enter your name: ")
+    player = Player(name)
+    print("Hello {}, this is a wolrd habited by Pokémons. From now on, your mission will be to"
+          "become a Pokémon master!".format(player))
+    print("Catch as much of them as you can!")
+    player.show_money()
+
+    if player.collection:
+        print("I can see that you already have some Pokémons...")
+        player.show_collection()
+    else:
+        print("You don't have any Pokémons yet, so you shall choose one.")
+        starter(player)
+
+    print("Great! Now that you already have a Pokémon, you shall fight your rival: Gary!")
+
+    while True:
+        print("------------------")
+        print("Choose an action:")
+        print("1 - Explore the world")
+        print("2 - Fight an enemy")
+        print("3 - Quit")
+        choice = input("Choose (1, 2 or 3) ----> ")
+
+        try:
+            choice = int(choice)
+        except:
+            print("Please enter a valid choice.")
+
+
+        if int(choice == 1):
+            player.explore()
+        elif choice == 2:
+            enemy = Enemy()
+            player.battle(enemy)
+        elif choice == 3:
+            break
+

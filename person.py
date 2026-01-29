@@ -96,6 +96,19 @@ class Player(Person):
         else:
             print("There are no pokemon captured yet.")
 
+    def explore(self):
+        if random.random() <= 0.3:
+            pk = random.choice(POKEMONS)
+            print("A wild {} has appeared!".format(pk))
+
+            choice = input("Choose a pokemon? (y/n) ")
+            if choice == "y":
+                if(random.random() >= 0.5):
+                    self.capture(pk)
+                else:
+                    print("{} ran away...".format(pk))
+        else:
+            print("You haven't found any Pokémon")
 
 class Enemy(Person):
     role = "Enemy"
@@ -108,5 +121,3 @@ class Enemy(Person):
                 collection.append(random.choice(pokemons))
 
         super().__init__(name=name, collection=collection)
-
-
