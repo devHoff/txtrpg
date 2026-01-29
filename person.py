@@ -25,10 +25,30 @@ class Person:
     def show_collection(self):
         print("---- {}'s Collection ----".format(self.name))
         if self.collection:
-            for pokemon in self.collection:
-                print("· {}".format(pokemon))
+            for index,pokemon in enumerate(self.collection):
+                print("{} - {}".format(index+1, pokemon))
         else:
             print("No Pokémon captured yet.")
+
+    def choose_pokemon(self):
+        if self.collection:
+            chosenPokemon = random.choice(self.collection)
+            print(color.BOLD + "\n{}: ".format(self.name) + color.END + color.ITALIC + color.BOLD + "{}".format(chosenPokemon.name) + color.END + color.ITALIC + ", I choose you!\n" + color.END)
+            return chosenPokemon
+        else:
+            print("No pokemon captured yet.")
+
+    def battle(self, target):
+        print("{} initiated a battle against {}!\n".format(self.name, target))
+        myPokemon = self.choose_pokemon()
+        target.show_collection()
+        enemyPokemon = target.choose_pokemon()
+
+        #IMPORTANT! FIX ERROR -------
+        #if myPokemon and enemyPokemon:
+        #    while True:
+        #        myPokemon.attack(enemyPokemon)
+        #        enemyPokemon.attack(myPokemon)
 
 class Player(Person):
     role = "Player"
@@ -36,6 +56,24 @@ class Player(Person):
     def capture(self, pokemon):
         self.collection.append(pokemon)
         print("{} was captured!".format(pokemon))
+
+    def choose_pokemon(self):
+        self.show_collection()
+        if self.collection:
+            while True:
+                choice = input("Choose a pokemon: ")
+                try:
+                    choice = int(choice)
+                    chosenPokemon = self.collection[choice-1]
+                    print(color.BOLD + "\n{}: ".format(self.name) + color.END + color.RED + color.BOLD + color.ITALIC + "{}".format(chosenPokemon.name) + color.END + color.ITALIC + ", I choose you!\n" + color.END)
+                    return chosenPokemon
+                except:
+                    print("Please enter a valid choice.")
+
+                chosenPokemon = POKEMONS[int(choice)]
+        else:
+            print("There are no pokemon captured yet.")
+
 class Enemy(Person):
     role = "Enemy"
 
@@ -46,5 +84,3 @@ class Enemy(Person):
                 collection.append(random.choice(pokemons))
 
         super().__init__(name=name, collection=collection)
-
-

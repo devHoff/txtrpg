@@ -30,4 +30,9 @@ def starter(player):
     print()
     player.show_collection()
 
-starter(Player("Arthur"))
+player = Player("Arthur", [FirePokemon("Charizard", level=1)])
+
+
+enemy1 = Enemy("Gary")
+
+player.battle(enemy1)
